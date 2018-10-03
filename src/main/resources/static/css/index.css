@@ -1,0 +1,7 @@
+.container{
+    overflow: scroll;
+    width: inherit;
+    height: 100%;
+    background-image: url(../img/MainPage-945p.jpg);
+    background-size: cover;
+}

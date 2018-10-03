@@ -1,16 +1,19 @@
 package com.project.collathon.naverlogin;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.github.scribejava.core.model.OAuthRequest;
-import com.github.scribejava.core.model.Response;
 import com.github.scribejava.core.model.Verb;
 import com.github.scribejava.core.oauth.OAuth20Service;
+import com.project.collathon.repository.users.Users;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Map;
 import java.util.UUID;
 
 @Component
@@ -53,17 +56,19 @@ public class NaverLoginBO {
         return null;
     }
 
-    public String getUserProfile(OAuth2AccessToken oauthToken) throws IOException {
+    public Users getUserProfile(OAuth2AccessToken oauthToken) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
         OAuth20Service oAuthService = new ServiceBuilder()
                 .apiKey(CLIENT_ID)
                 .apiSecret(CLIENT_SECRET)
                 .callback(REDIRECT_URL)
                 .build(NaverLoginApi.instance());
-
         OAuthRequest request = new OAuthRequest(Verb.GET, PROFILE_API_URL, oAuthService);
         oAuthService.signRequest(oauthToken, request);
-        Response response = request.send();
-        return response.getBody();
+        String result = request.send().getBody();
+        Map<String, Object> map = mapper.readValue(result, new TypeReference<Map<String, Object>>(){});
+        Users user = mapper.readValue(mapper.writeValueAsString(map.get("response")),Users.class);
+        return user;
     }
 
     private String generateRandomString(){

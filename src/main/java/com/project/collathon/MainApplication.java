@@ -12,7 +12,7 @@ public class MainApplication {
         SpringApplication.run(MainApplication.class, args);
     }
 
-    @Bean
+    @Bean // thymeleaf-layout 적용 Bean
     public LayoutDialect layoutDialect(){
         return new LayoutDialect();
     }

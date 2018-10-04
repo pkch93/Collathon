@@ -21,6 +21,6 @@ public class History {
     @Lob
     private String content;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="PET_ID")
+    @JoinColumn(name="PET_ID", foreignKey = @ForeignKey(name="HISTORY_PET_FK"))
     private Pet pet;
 }

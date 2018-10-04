@@ -22,9 +22,9 @@ public class LoginController {
     private NaverLoginBO naverLoginBO;
 
     @GetMapping("/login")
-    public ModelAndView login(HttpSession session){
+    public String login(HttpSession session){
         String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-        return new ModelAndView("login", "url", naverAuthUrl);
+        return "redirect:" + naverAuthUrl;
     }
 
     @GetMapping("/callback")

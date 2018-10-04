@@ -3,8 +3,19 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <body th:fragment="mainBody">
-    <div class="container">
-        <th:block layout:fragment="page_main"></th:block>
+    <div class="container-flex">
+        <nav class="menubar">
+            <!--<img class="menu__logo" alt="로고"/>-->
+            <a href="/login"><img class="menu__login" th:src="@{/img/naver_login_button.PNG}" alt="네이버 로그인"/></a>
+            <ul class="menu__items">
+                <li class="menu__item">로그인</li>
+                <li class="menu__item">분양</li>
+                <li class="menu__item">이력</li>
+            </ul>
+        </nav>
+        <div class="container">
+            <th:block layout:fragment="page_main"></th:block>
+        </div>
     </div>
 </body>
 </html>

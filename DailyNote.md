@@ -34,3 +34,11 @@
         
         - thymeleaf dialect 적용
         - layout을 위한 html 작성
+        
+ - ## 18.10.04
+ 
+    ### 1. History 테스트 코드 작성
+    
+    ### 2. View 작업
+    
+        - index 페이지 layout 및 초기 작업

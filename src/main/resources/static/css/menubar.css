@@ -1,0 +1,29 @@
+.menubar{
+    width: 300px;
+    height: inherit;
+    background-color: rgb(239, 197, 97);
+}
+
+.menu__logo {
+    display: block;
+    margin: 50px auto;
+}
+.menu__login {
+    display: block;
+    width: 200px;
+    margin: 30px auto;
+}
+
+.menu__items{
+    padding: 0;
+}
+
+.menu__item{
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 97px;
+    margin: 20px 0 ;
+    background-image: url("../img/navifoot.png");
+    background-size: cover;
+}

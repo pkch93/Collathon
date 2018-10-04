@@ -3,6 +3,7 @@ package com.project.collathon.service;
 import com.project.collathon.repository.pet.Pet;
 import com.project.collathon.repository.pet.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +20,8 @@ public class PetService {
     PetRepository petRepository;
 
     public List<Pet> getPetList(){
-        List<Pet> petList = petRepository.findAll();
-        petList.sort(Comparator.comparing(Pet::getRegister));
+        List<Pet> petList = petRepository.findAll(Sort.by(Sort.Order.desc("register")));
+        // petList.sort(Comparator.comparing(Pet::getRegister));
         return petList;
     }
 

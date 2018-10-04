@@ -1,11 +1,17 @@
 @import url(index.css);
-
-* {
-    background-color: rgb(239, 197, 97);
-}
+@import url(menubar.css);
 
 html, body{
     height: 100%;
     margin: 0;
     padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.container-flex{
+    display: flex;
+    height: inherit;
 }

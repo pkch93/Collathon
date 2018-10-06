@@ -3,6 +3,19 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/application}">
     <th:block layout:fragment="page_main">
-
+        <i class="fas fa-bars toggle-menu"></i>
+        <div class="container">
+            <th:form class="search" th:action="@{/search}" method="POST">
+                <label for="query" class="search__box search__box--black-line">
+                    <select class="search__category search__query">
+                        <option value="종류">종류</option>
+                        <option value="품종">품종</option>
+                        <option value="지역">지역</option>
+                    </select>
+                    <input id="query" class="search__query .search__query--light-gray search__input" type="text" name="query" />
+                    <i class="fas fa-search search__submit"></i>
+                </label>
+            </th:form>
+        </div>
     </th:block>
 </html>

@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/application}">
-<th:block layout:fragment="page_main">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <h1>Pet</h1>
     <div th:if="${pet != null}">
         <p th:text="${pet.name}"></p>
         <p th:text="${pet.intro}"></p>
     </div>
-</th:block>
 </html>

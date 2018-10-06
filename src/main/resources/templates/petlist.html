@@ -3,12 +3,30 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/application}">
 <th:block layout:fragment="page_main">
-    <h1>PetList</h1>
-    <th:block th:switch="${petList.size()}">
-        <div th:case="0">등록된 Pet이 없습니다.</div>
-        <div th:case="*" th:each="pet : ${petList}">
-            <p th:text="${pet.name}"></p>
-        </div>
-    </th:block>
+    <section class="pet">
+        <nav class="top-nav">
+            <i class="fas fa-bars toggle-menu"></i>
+            <th:form class="search" th:action="@{/search}" method="POST">
+                <label for="query" class="search__box">
+                    <select class="search__category search__query">
+                        <option value="종류">종류</option>
+                        <option value="품종">품종</option>
+                        <option value="지역">지역</option>
+                    </select>
+                    <input id="query" class="search__query search__input" type="text" name="query" />
+                    <span><i class="fas fa-search search__submit"></i></span>
+                </label>
+            </th:form>
+            <th:block th:if="${session.user != null}">
+                <span class="welcome" th:text="${session.user.name + '님 환영합니다!'}"></span>
+            </th:block>
+        </nav>
+        <th:block th:switch="${petList.size()}">
+            <div class="" th:case="0">등록된 Pet이 없습니다.</div>
+            <div class="" th:case="*" th:each="pet : ${petList}">
+                <p th:text="${pet.name}"></p>
+            </div>
+        </th:block>
+    </section>
 </th:block>
 </html>

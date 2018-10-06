@@ -1,5 +1,18 @@
-/*
+
 .pet{
     width: 100%;
 }
-*/
+
+.petlist{
+    margin: 50px;
+}
+
+.petlist__zero{
+    margin: 0 auto;
+}
+
+.pet-profile{
+    padding: 10px;
+    border-bottom: 1px solid #A9A9A9;
+}
+

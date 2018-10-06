@@ -6,10 +6,12 @@ import com.project.collathon.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -30,13 +32,19 @@ public class PetController {
         return new ModelAndView("pet", "pet", pet);
     }
 
+    @GetMapping("/register")
+    public String registerPet(){
+        return "register";
+    }
+
     @PostMapping("/pet")
-    public ModelAndView registerPet(HttpServletRequest request){
+    public ModelAndView registerPet(HttpServletRequest request) throws IOException {
+        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         HttpSession session = request.getSession();
         Users user = (Users) session.getAttribute("user");
         boolean isBreed = request.getParameter("isBreed") == "T" ? true : false;
         Pet pet = petService.registerPet(request.getParameter("name"), request.getParameter("category"), request.getParameter("breed"), user.getName(),
-                request.getParameter("intro"), isBreed,request.getParameter("profile"));
+                request.getParameter("intro"), isBreed, multipartRequest.getFile("profile"));
         return new ModelAndView("pet", "pet", pet);
     }
 

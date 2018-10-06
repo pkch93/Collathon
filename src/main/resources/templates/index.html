@@ -7,12 +7,12 @@
         <div class="container">
             <th:form class="search" th:action="@{/search}" method="POST">
                 <label for="query" class="search__box search__box--black-line">
-                    <select class="search__category search__query">
+                    <select class="search__category search__query search__query--light-gray">
                         <option value="종류">종류</option>
                         <option value="품종">품종</option>
                         <option value="지역">지역</option>
                     </select>
-                    <input id="query" class="search__query .search__query--light-gray search__input" type="text" name="query" />
+                    <input id="query" class="search__query search__query--light-gray search__input" type="text" name="query" />
                     <i class="fas fa-search search__submit"></i>
                 </label>
             </th:form>

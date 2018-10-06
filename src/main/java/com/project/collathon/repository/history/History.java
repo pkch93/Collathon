@@ -16,6 +16,8 @@ public class History {
     @Column(name="HISTORY_ID")
     private Long id;
     private Timestamp date;
+    @Length(max=100)
+    private String title;
     @Length(max=80)
     private String address;
     @Lob

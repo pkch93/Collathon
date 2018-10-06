@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/application}">
+
+<!-- 등록 페이지 -->
+<th:block layout:fragment="page_main">
+    <form th:replace="layout/register :: pet-resister"></form>
+    <form th:replace="layout/register :: history-resister"></form>
+</th:block>
+</html>

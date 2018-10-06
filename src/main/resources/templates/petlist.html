@@ -14,19 +14,30 @@
                         <option value="지역">지역</option>
                     </select>
                     <input id="query" class="search__query search__input" type="text" name="query" />
-                    <span><i class="fas fa-search search__submit"></i></span>
+                    <span class="search__submit search__submit--box"><i class="fas fa-search"></i></span>
                 </label>
             </th:form>
             <th:block th:if="${session.user != null}">
                 <span class="welcome" th:text="${session.user.name + '님 환영합니다!'}"></span>
             </th:block>
         </nav>
-        <th:block th:switch="${petList.size()}">
-            <div class="" th:case="0">등록된 Pet이 없습니다.</div>
-            <div class="" th:case="*" th:each="pet : ${petList}">
-                <p th:text="${pet.name}"></p>
-            </div>
-        </th:block>
+        <article class="petlist">
+            <th:block th:switch="${petList.size()}">
+                <div class="petlist__zero" th:case="0">
+                    등록된 Pet이 없습니다.
+                </div>
+                <div class="petlist__exist" th:case="*" th:each="pet : ${petList}">
+                    <div class="pet-profile">
+                        <img class="pet-profile__img" />
+                        <div class="pet-profile__box">
+                            <h2 class="pet-name" th:text="${pet.name}">펫 이름</h2>
+                            <p class="pet-category" th:text="${pet.category}">펫 종류</p>
+                            <p class="pet-breed" th:text="${pet.breed}">펫 품종</p>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+        </article>
     </section>
 </th:block>
 </html>

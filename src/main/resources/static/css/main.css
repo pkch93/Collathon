@@ -3,6 +3,7 @@
 @import url(pet.css);
 @import url(top-nav.css);
 @import url(search.css);
+@import url(register.css);
 
 *{
     box-sizing: border-box;

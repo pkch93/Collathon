@@ -42,3 +42,11 @@
     ### 2. View 작업
     
         - index 페이지 layout 및 초기 작업
+        
+ - ## 18.10.06
+ 
+    ### 1. View 작업
+        - petList view 디자인
+        - index 페이지 스타일링 완료
+        
+    ### 2. file 업로드 설정

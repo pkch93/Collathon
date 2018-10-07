@@ -1,12 +1,16 @@
 @import url(index.css);
 @import url(menubar.css);
 @import url(pet.css);
+@import url(pets.css);
 @import url(top-nav.css);
 @import url(search.css);
 @import url(register.css);
 
+@import url('https://fonts.googleapis.com/css?family=Yeon+Sung');
+
 *{
     box-sizing: border-box;
+    font: 25px 'Yeon Sung', sans-serif;
 }
 html, body{
     height: 100%;
@@ -16,6 +20,10 @@ html, body{
 
 li {
     list-style: none;
+}
+
+a {
+    text-decoration: none;
 }
 
 .container-flex{

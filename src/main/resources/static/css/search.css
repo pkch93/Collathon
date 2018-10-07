@@ -1,6 +1,6 @@
 
 .search{
-    width: 450px;
+    width: 90%;
     display: flex;
     justify-content: center;
 }
@@ -8,6 +8,14 @@
 .search__box{
     padding: 10px;
     background-color: rgb(239, 197, 97);
+}
+
+.search__box--flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    width: inherit;
 }
 
 .search__box--black-line{
@@ -24,8 +32,12 @@
     color: #fff;
 }
 
+.search__query--flexible{
+    width: 75%;
+}
+
 .search__category{
-    width: 50px;
+    width: 70px;
 }
 
 .search__input{
@@ -38,7 +50,6 @@
 }
 
 .search__submit--box{
-    padding: 5px;
+    padding: 0 5px;
     background-color: #A9A9A9;
-    border: 1px solid #737373;
 }

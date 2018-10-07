@@ -40,10 +40,9 @@ public class PetController {
     @PostMapping("/pet")
     public ModelAndView registerPet(HttpServletRequest request) throws IOException {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-        HttpSession session = request.getSession();
-        Users user = (Users) session.getAttribute("user");
         boolean isBreed = request.getParameter("isBreed") == "T" ? true : false;
-        Pet pet = petService.registerPet(request.getParameter("name"), request.getParameter("category"), request.getParameter("breed"), user.getName(),
+        Pet pet = petService.registerPet(request.getParameter("petname"), request.getParameter("category"),
+                request.getParameter("breed"), request.getParameter("username"),
                 request.getParameter("intro"), isBreed, multipartRequest.getFile("profile"));
         return new ModelAndView("pet", "pet", pet);
     }

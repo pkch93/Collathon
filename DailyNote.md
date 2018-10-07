@@ -50,3 +50,14 @@
         - index 페이지 스타일링 완료
         
     ### 2. file 업로드 설정
+    
+ - ## 18.10.07
+ 
+    ### 1. View
+        - pet, petlist view 작업
+        - top-nav 수정 (검색바 길이 조정)
+        - menubar에서 login render 등의 작업 수행 
+        
+    ### 2. file upload 작업 중
+    
+    ### 3. 오류페이지 생성 및 test

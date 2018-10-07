@@ -12,12 +12,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PetService {
+public class PetService{
 
     private static final String SAVE_PATH = "/uploads";
     private static final String PREFIX_URL = "/uploads/";
@@ -82,12 +83,13 @@ public class PetService {
 
     private String generateFileName(String extName){
         LocalDateTime now = LocalDateTime.now();
-        String fileName = now.toString() + "_" + extName;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuuMMddhhMMss");
+        String fileName = now.format(formatter) + extName;
         return fileName;
     }
 
     private void writeFile(MultipartFile file, String saveFileName) throws IOException {
-        byte[] data = file.getBytes();
+        byte [] data = file.getBytes();
         FileOutputStream fos = new FileOutputStream(SAVE_PATH + "/" + saveFileName);
         fos.write(data);
         fos.close();

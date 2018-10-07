@@ -1,0 +1,57 @@
+
+.pet, .pets{
+    width: 100%;
+}
+
+.petlist{
+    margin: 50px;
+}
+
+.petlist__zero{
+    margin: 0 auto;
+}
+
+.petlist__exist{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.petlist__exist a {
+    text-decoration: none;
+}
+
+.petlist__exist a:hover{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.petlist__exist .pet__profile:hover{
+    border: none;
+}
+
+.pet-profile{
+    display: flex;
+    justify-content: space-around;
+    width: 300px;
+    height: 200px;
+    padding: 10px;
+    margin: 0 10px;
+    border-bottom: 1px solid #A9A9A9;
+}
+
+.pet-profile__box{
+    margin: auto 0;
+}
+
+.pet-profile__box .pet-name {
+    font-size: 50px;
+}
+.pet-profile__img {
+    width: 100px;
+    height: auto;
+    display: block;
+}
+
+.pet-profile .pet-text{
+    text-align: center;
+    color: #000;
+}

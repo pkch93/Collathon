@@ -8,12 +8,20 @@
     display: block;
     margin: 50px auto;
 }
+
 .menu__login {
     display: block;
     width: 200px;
     margin: 30px auto;
 }
 
+.menu__welcome{
+    display: block;
+    text-align: center;
+    padding: 20px 0;
+    border: 1px #A9A9A9;
+    border-style: solid none;
+}
 .menu__items{
     padding: 0;
 }

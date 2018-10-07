@@ -3,11 +3,30 @@
       xmlns:th="http://www.thymeleaf.org">
     <nav th:fragment="navbar" class="menubar">
         <!--<img class="menu__logo" alt="로고"/>-->
-        <a href="/login"><img class="menu__login" th:src="@{/img/naver_login_button.PNG}" alt="네이버 로그인"/></a>
+        <th:block th:if="${session.user == null}">
+            <a href="/login"><img class="menu__login" th:src="@{/img/naver_login_button.PNG}" alt="네이버 로그인"/></a>
+        </th:block>
+        <th:block th:if="${session.user != null}">
+            <span class="menu__welcome" th:text="${session.user.name + '님 환영합니다!'}"></span>
+        </th:block>
         <ul class="menu__items">
             <li class="menu__item">로그인</li>
             <li class="menu__item">분양</li>
             <li class="menu__item">이력</li>
         </ul>
+    </nav>
+    <nav th:fragment="top-nav" class="top-nav">
+        <i class="fas fa-bars toggle-menu"></i>
+        <form class="search" th:action="@{/search}" method="POST">
+            <label for="query" class="search__box search__box--flex">
+                <select class="search__category search__query">
+                    <option value="종류">종류</option>
+                    <option value="품종">품종</option>
+                    <option value="지역">지역</option>
+                </select>
+                <input id="query" class="search__query search__query--flexible" type="text" name="query" />
+                <span class="search__submit search__submit--box"><i class="fas fa-search"></i></span>
+            </label>
+        </form>
     </nav>
 </html>

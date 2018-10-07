@@ -1,18 +1,25 @@
-
-.pet{
-    width: 100%;
+.pet-details{
+    display: flex;
+    justify-content: center;
+    margin: 30px;
 }
 
-.petlist{
-    margin: 50px;
+.pet-details__thumbnail > pet-avatar {
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
-.petlist__zero{
-    margin: 0 auto;
+.pet-details__thumbnail > short-intro {
+    text-align: center;
 }
 
-.pet-profile{
-    padding: 10px;
-    border-bottom: 1px solid #A9A9A9;
+.pet-details__thumbnail > short-intro span {
+    font-weight: bold;
 }
 
+.pet-details__thumbnail > short-intro > .pet-name {
+    font-size: 45px;
+    color: #A9A9A9;
+}

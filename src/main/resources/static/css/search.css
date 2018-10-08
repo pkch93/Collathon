@@ -8,14 +8,14 @@
 .search__box{
     padding: 10px;
     background-color: rgb(239, 197, 97);
+    display: flex;
 }
 
 .search__box--flex{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-left: 10px;
     width: inherit;
+    justify-content: center;
+    align-items: center;
 }
 
 .search__box--black-line{
@@ -37,19 +37,29 @@
 }
 
 .search__category{
-    width: 70px;
+    width: 55px;
 }
 
 .search__input{
-    width: 300px;
+    width: 280px;
     border: none;
 }
 
 .search__submit{
+    border: none;
     cursor: pointer;
 }
 
 .search__submit--box{
     padding: 0 5px;
     background-color: #A9A9A9;
+}
+
+.search__submit:hover{
+    color: #fff;
+    background-color: #000;
+}
+
+.search__submit > .submit-letter {
+    font-size: 20px;
 }

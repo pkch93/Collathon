@@ -53,5 +53,6 @@
 
 .pet-profile .pet-text{
     text-align: center;
+    margin: 0;
     color: #000;
 }

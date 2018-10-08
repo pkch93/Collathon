@@ -1,4 +1,4 @@
-# 콜라톤 개발 일지
+﻿# 콜라톤 개발 일지
 
 - ## 18.10.01
 
@@ -61,3 +61,20 @@
     ### 2. file upload 작업 중
     
     ### 3. 오류페이지 생성 및 test
+    
+ - ## 18.10.08
+ 
+    ### 1. View
+        - pet, petlist view 작업
+        - menubar login / logout rendering 작업
+        - menubar 디자인 수정
+        - Pet, History 수정 페이지 작업
+        
+    ### 2. Back-end
+        - Pet, History 생성, 수정, 삭제 Test
+        - 검색 구현
+        - Logout 작업
+        
+    ### 3. DB 설계 수정
+        - 기존에 Naver 로그인만 가져오는 걸로는 부족하다고 판단, User, User Log, Alarm 테이블 설계
+        

@@ -22,6 +22,7 @@ public class CreateRunner implements ApplicationRunner {
         Pet pet2 = new Pet("강아지", "개", "진돗개", Timestamp.valueOf(LocalDateTime.now()), "박경철");
         pet1.setProfile("/uploads/dog.PNG");
         pet2.setProfile("/uploads/dog.PNG");
+        pet1.setIntro("누구보다 빠르게 남들과는 다르게 색다르게 비트를 타는 비트 위에 나그네");
         petRepository.save(pet1);
         petRepository.save(pet2);
     }

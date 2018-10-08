@@ -35,3 +35,7 @@
     background-image: url("../img/navifoot.png");
     background-size: cover;
 }
+
+.menu__item--smaller{
+    font-size: 20px;
+}

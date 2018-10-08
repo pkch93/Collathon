@@ -13,13 +13,21 @@
             </div>
             <div class="pet-details__data">
                 <div class="pet-personal">
-
+                    <p class="pet-personal__elt" th:text="${'종류 > ' + pet.category}"></p>
+                    <p class="pet-personal__elt" th:text="${'품종 > ' + pet.breed}"></p>
+                    <p class="pet-personal__elt" th:text="${'등록일 > ' + pet.registerDate()}"></p>
                 </div>
                 <div class="long-intro">
-
+                    <h3 class="long-intro__title">소개글</h3>
+                    <p class="long-intro__content" th:text="${pet.intro}"></p>
                 </div>
             </div>
         </article>
+        <th:block th:if="${histories != null}">
+            <article class="pet-histories" th:each="history : ${histories}">
+
+            </article>
+        </th:block>
     </section>
 </th:block>
 </html>

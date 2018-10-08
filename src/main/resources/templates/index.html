@@ -4,17 +4,17 @@
       layout:decorate="~{layout/application}">
     <th:block layout:fragment="page_main">
         <div class="container">
-            <th:form class="search" th:action="@{/search}" method="POST">
+            <form class="search" th:action="@{/search}" method="post">
                 <label for="query" class="search__box search__box--black-line">
-                    <select class="search__category search__query search__query--light-gray">
-                        <option value="종류">종류</option>
-                        <option value="품종">품종</option>
-                        <option value="지역">지역</option>
+                    <select class="search__category search__query search__query--light-gray" name="method">
+                        <option value="name">이름</option>
+                        <option value="category">종류</option>
+                        <option value="breed">품종</option>
                     </select>
                     <input id="query" class="search__query search__query--light-gray search__input" type="text" name="query" />
-                    <i class="fas fa-search search__submit"></i>
+                    <button type="submit" class="search__submit search__submit--box"><span class="submit-letter">검색</span></button>
                 </label>
-            </th:form>
+            </form>
         </div>
     </th:block>
 </html>

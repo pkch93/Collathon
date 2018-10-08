@@ -6,6 +6,7 @@
     <section class="pets">
         <nav th:replace="layout/navbar :: top-nav"></nav>
         <article class="petlist">
+            <th:block th:if="${petList != null}">
             <th:block th:switch="${petList.size()}">
                 <div class="petlist__zero" th:case="0">
                     등록된 Pet이 없습니다.
@@ -24,6 +25,7 @@
                         </a>
                     </th:block>
                 </div>
+            </th:block>
             </th:block>
         </article>
     </section>

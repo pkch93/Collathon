@@ -10,6 +10,9 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Formatter;
 import java.util.List;
 
 @Entity
@@ -38,4 +41,9 @@ public class Pet {
     private String userName;
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "pet")
     private List<History> histories;
+
+    public String registerDate(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd");
+        return register.toLocalDateTime().format(formatter);
+    }
 }

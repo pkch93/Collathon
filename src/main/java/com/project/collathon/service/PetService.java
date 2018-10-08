@@ -60,14 +60,12 @@ public class PetService{
     } // 애완동물 삭제
 
     public List<Pet> searchPets(String method, String query){
-        List<Pet> searchResult = new ArrayList<>();
-        if (method.equals("name"))
-            searchResult = petRepository.findByName(query);
+        List<Pet> searchResult = null;
+        if (method.equals("name")) searchResult = petRepository.findByNameLike(query);
         else if (method.equals("category")) searchResult = petRepository.findByCategory(query);
         else if (method.equals("breed")) searchResult = petRepository.findByBreed(query);
         return searchResult;
-    }
-    // 검색 Logic
+    } // 검색 Logic
 
     public String restore(MultipartFile file) throws IOException {
         String url;

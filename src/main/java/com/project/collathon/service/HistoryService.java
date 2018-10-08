@@ -5,6 +5,7 @@ import com.project.collathon.repository.history.HistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,6 +17,10 @@ public class HistoryService {
     public History getHistory(Long historyId){
         Optional<History> history = historyRepository.findById(historyId);
         return history.orElseThrow(RuntimeException::new);
+    }
+    public List<History> getHistories(Long historyId){
+        List<History> histories = historyRepository.findAllById(historyId);
+        return histories;
     } // 이력 조회
 
     public History createHistory(){

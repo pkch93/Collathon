@@ -30,6 +30,12 @@ public class LoginController {
         return "redirect:" + naverAuthUrl;
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "redirect:/";
+    }
+
     @GetMapping("/callback")
     public String callback(@RequestParam String code, @RequestParam String state, HttpSession session) throws IOException {
         OAuth2AccessToken oAuthToken = naverLoginBO.getAccessToken(session, code, state);

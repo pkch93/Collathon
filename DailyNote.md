@@ -77,4 +77,15 @@
         
     ### 3. DB 설계 수정
         - 기존에 Naver 로그인만 가져오는 걸로는 부족하다고 판단, User, User Log, Alarm 테이블 설계
+ 
+ - ## 18.10.09
+ 
+    ### 1. View
+        - register(펫 등록, 이력 등록 페이지) 스타일링
+        - login 한 경우 자신의 애완동물에 한해 정보 수정 및 삭제 버튼 구현
+        - 내 펫 보기 페이지 구현
+        
+    ### 2. Back-end
+        - HiddenHttpMethodFilter 빈 등록으로 patch, delete method 사용 구현
+        - modify, delete url 수정
         

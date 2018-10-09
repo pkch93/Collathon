@@ -7,3 +7,20 @@
     justify-content: center;
     align-items: center;
 }
+
+.empty{
+    width: 500px;
+    margin: auto;
+}
+
+.empty__picture{
+    display: block;
+    width: inherit;
+}
+
+.empty__message{
+    display: block;
+    text-align: center;
+    margin: 50px 0;
+    font-size: 40px;
+}

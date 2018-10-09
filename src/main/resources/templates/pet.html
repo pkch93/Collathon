@@ -20,6 +20,18 @@
                 <div class="long-intro">
                     <h3 class="long-intro__title">소개글</h3>
                     <p class="long-intro__content" th:text="${pet.intro}"></p>
+                    <th:block th:if="${session.user != null}">
+                        <div class="mypet" th:if="${session.user.name == pet.userName}">
+                            <span class="mypet__modify">
+                                <a th:href="@{{id}/modify(id=${pet.id})}">펫 정보 바꾸기</a>
+                            </span>
+                            <span class="mypet__delete">
+                                <form th:action="@{{id}(id=${pet.id})}" th:method="delete">
+                                    <button type="submit" class="pet-delete">내 펫과 이별..</button>
+                                </form>
+                            </span>
+                        </div>
+                    </th:block>
                 </div>
             </div>
         </article>

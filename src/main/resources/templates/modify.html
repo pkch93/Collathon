@@ -3,11 +3,9 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/application}">
-
-<!-- 등록 페이지 -->
 <th:block layout:fragment="page_main">
     <a th:href="@{/}"><img class="logo logo--big" src="#" alt="로고"/></a>
-    <form th:replace="layout/register :: pet-resister"></form>
-    <form th:replace="layout/register :: history-resister"></form>
+    <form th:replace="layout/modify :: pet-resister"></form>
+    <form th:replace="layout/modify :: history-resister"></form>
 </th:block>
 </html>

@@ -28,8 +28,11 @@ public class PetService{
 
     public List<Pet> getPetList(){
         List<Pet> petList = petRepository.findAll(Sort.by(Sort.Order.desc("register")));
-        // petList.sort(Comparator.comparing(Pet::getRegister));
         return petList;
+    }
+
+    public List<Pet> getMyPet(String name){
+        return petRepository.findByUserName(name);
     }
 
     public Pet getDetail(Long id){

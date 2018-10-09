@@ -11,6 +11,7 @@ import java.util.Optional;
 public interface PetRepository extends JpaRepository<Pet, Long> {
     @Query("select u from Pet u where u.name like %?1%")
     List<Pet> findByNameLike(String name); // 이름 검색
+    List<Pet> findByUserName(String name); // 유저이름 검색
     List<Pet> findByCategory(String category); // 분류 검색
     List<Pet> findByBreed(String breed); //품종 검색
 }

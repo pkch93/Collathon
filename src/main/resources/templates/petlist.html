@@ -6,26 +6,34 @@
     <section class="pets">
         <nav th:replace="layout/navbar :: top-nav"></nav>
         <article class="petlist">
-            <th:block th:if="${petList != null}">
-            <th:block th:switch="${petList.size()}">
-                <div class="petlist__zero" th:case="0">
-                    등록된 Pet이 없습니다.
-                </div>
-                <div class="petlist__exist" th:case="*">
-                    <th:block th:each="pet : ${petList}">
-                        <a th:href="@{/pet/{id}(id=${pet.id})}">
-                        <div class="pet-profile">
-                            <img src="/uploads/dog.PNG" class="pet-profile__img" alt="애완동물 사진" />
-                            <div class="pet-profile__box">
-                                <h4 class="pet-text pet-name" th:text="${pet.name}">펫 이름</h4>
-                                <p class="pet-text pet-category" th:text="${pet.category}">펫 종류</p>
-                                <p class="pet-text pet-breed" th:text="${pet.breed}">펫 품종</p>
-                            </div>
-                        </div>
-                        </a>
-                    </th:block>
+            <th:block th:if="${petList == null}">
+                <div class="empty">
+                    <img class="empty__picture" src="/img/OTL.PNG" alt="No petList" />
+                    <span class="empty__message">
+                        <th:block th:if="${mode == 'petlist'}" th:text="${'등록된 Pet이 없습니다.'}"></th:block>
+                        <th:block th:if="${mode == 'search'}" th:text="${'검색 결과가 없습니다.'}"></th:block>
+                        <th:block th:if="${mode == 'mypet'}" th:text="${session.user.name + '님께서 등록한 펫이 없습니다.'}"></th:block>
+                    </span>
                 </div>
             </th:block>
+            <th:block th:if="${petList != null}">
+                <th:block th:switch="${petList.size()}">
+                    <div class="petlist__zero" th:case="0"></div>
+                    <div class="petlist__exist" th:case="*">
+                        <th:block th:each="pet : ${petList}">
+                            <a th:href="@{/pet/{id}(id=${pet.id})}">
+                                <div class="pet-profile">
+                                    <img src="/uploads/dog.PNG" class="pet-profile__img" alt="애완동물 사진" />
+                                    <div class="pet-profile__box">
+                                        <h4 class="pet-text pet-name" th:text="${pet.name}">펫 이름</h4>
+                                        <p class="pet-text pet-category" th:text="${pet.category}">펫 종류</p>
+                                        <p class="pet-text pet-breed" th:text="${pet.breed}">펫 품종</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </th:block>
+                    </div>
+                </th:block>
             </th:block>
         </article>
     </section>

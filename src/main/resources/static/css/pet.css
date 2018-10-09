@@ -52,3 +52,34 @@
     text-align : center;
     font-size: 40px;
 }
+
+.mypet{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.mypet > .mypet__modify{
+    display: block;
+    padding: 10px;
+    background: #0000ff;
+    margin: 10px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.mypet > .mypet__modify > a{
+    color: #fff;
+}
+
+.mypet > .mypet__delete button{
+    display: block;
+    padding: 10px;
+    background: #ff0000;
+    color: #fff;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}

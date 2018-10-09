@@ -1,6 +1,6 @@
 .menubar{
     width: 300px;
-    height: inherit;
+    min-height: 100%;
     background-color: rgb(239, 197, 97);
 }
 
@@ -19,6 +19,7 @@
     display: block;
     text-align: center;
     padding: 20px 0;
+    margin: 10px 0;
     border: 1px #A9A9A9;
     border-style: solid none;
 }
@@ -26,12 +27,17 @@
     padding: 0;
 }
 
+.menu__items a {
+    display: inline-block;
+    width: auto;
+}
+
 .menu__item{
     display: flex;
     align-items: center;
     width: 200px;
     height: 97px;
-    margin: 20px 0 ;
+    margin: 5px 0 ;
     background-image: url("../img/navifoot.png");
     background-size: cover;
 }

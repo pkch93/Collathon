@@ -10,7 +10,7 @@
         <th:block th:if="${session.user != null}">
             <span class="menu__welcome" th:text="${session.user.name + '님 환영합니다!'}"></span>
             <a th:href="@{/logout}"><li class="menu__item">로그아웃</li></a>
-            <li class="menu__item">내 펫보기</li>
+            <a th:href="@{/mypet}"><li class="menu__item">내 펫보기</li></a>
             <a th:href="@{/register}"><li class="menu__item">펫 등록</li></a>
         </th:block>
             <a th:href="@{/pet}"><li class="menu__item menu__item--smaller">애완동물조회</li></a>
@@ -28,7 +28,7 @@
                     <option value="breed">품종</option>
                 </select>
                 <input id="query" class="search__query search__query--flexible" type="text" name="query" />
-                <span class="search__submit search__submit--box"><i class="fas fa-search"></i></span>
+                <button type="submit" class="search__submit search__submit--box"><span class="submit-letter">검색</span></button>
             </label>
         </form>
     </nav>

@@ -29,5 +29,5 @@ a {
 
 .container-flex{
     display: flex;
-    height: inherit;
+    min-height: 100%;
 }

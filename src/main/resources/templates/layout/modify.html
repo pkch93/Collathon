@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <form th:fragment="pet-resister" class="register" th:object="${pet}"
+          th:action="@{/pet/{id}(id=${pet.id})}" th:method="patch" enctype="multipart/form-data">
+        <input type="hidden" name="username" th:value="${session.user.name}"/>
+        <input type="hidden" name="category" value="개"/>
+        <input type="hidden" name="breed" value="진돗개"/>
+
+        <h3 class="register__subtitle">필수 정보</h3>
+        <div class="register__required">
+            <div class="register-data">
+                <label for="petname">
+                    <span class="data data--block">이름</span>
+                    <input id="petname" type="text" name="petname" />
+                </label>
+            </div>
+        </div>
+        <!-- 카테고리와 품종은 span을 이용한 js로 처리 -->
+        <h3 class="register__subtitle">선택 정보</h3>
+        <div class="register__optional">
+            <div class="register-data">
+                <label>
+                    <span class="data data--block">소개글</span>
+                    <textarea name="intro"></textarea>
+                </label>
+            </div>
+            <div class="register-data">
+                <label>
+                    <span class="data">애완동물사진</span>
+                    <input type="file" name="profile" />
+                </label>
+            </div>
+            <div class="register-data">
+                <label>
+                    <span class="data">분양여부</span>
+                    네 <input type="radio" name="isbreed" value="T" />
+                    아니요<input type="radio" name="isbreed" value="F" checked />
+                </label>
+            </div>
+        </div>
+        <button class="register-submit" type="submit">애완동물 정보 수정</button>
+    </form>
+
+    <form th:fragment="history-resister" class="register history-resister" th:action="@{history}" method="post">
+        <h3 class="register__subtitle">이력 등록</h3>
+        <input type="hidden" name="username" th:value="${session.user.name}"/>
+        <div class="register-data">
+            <label>
+                <span class="data data--block">제목</span>
+                <input type="text" name="title" />
+            </label>
+        </div>
+        <div class="register-data">
+            <label>
+                <span class="data data--block">장소</span>
+                <input type="text" name="address"/>
+            </label>
+        </div>
+        <div class="register-data">
+            <label>
+                <span class="data data--block">내용</span>
+                <textarea name="content"></textarea>
+            </label>
+        </div>
+        <button class="register-submit" type="submit">이력 정보 수정</button>
+    </form>
+</html>

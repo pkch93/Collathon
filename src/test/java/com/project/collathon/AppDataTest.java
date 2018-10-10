@@ -39,7 +39,7 @@ public class AppDataTest {
     @Test
     public void addPet(){
         Pet pet = new Pet("멍뭉이", "개", "치와와",
-                Timestamp.valueOf(LocalDateTime.now()), testUser.getName());
+                Timestamp.valueOf(LocalDateTime.now()), testUser);
         Pet testPet = petRepository.save(pet);
         assertEquals(pet, testPet);
     }

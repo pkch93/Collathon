@@ -45,9 +45,13 @@
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
-.long-intro{
-    width: 50%;
+.pet-personal__elt--deepbox{
+    text-align: center;
+    cursor: pointer;
+    background: chocolate;
+    color: white;
 }
+
 .long-intro .long-intro__title {
     text-align : center;
     font-size: 40px;

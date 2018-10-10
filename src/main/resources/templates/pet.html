@@ -8,7 +8,7 @@
         <article class="pet-details">
             <div class="pet-details__thumbnail">
                 <img class="pet-avatar" th:src="@{{url}(url=${pet.profile})}" alt="펫 이미지" />
-                <p class="short-intro"><span class="pet-owner" th:text="${pet.userName + '님'}"></span>의<br/>
+                <p class="short-intro"><span class="pet-owner" th:text="${pet.user.name + '님'}"></span>의<br/>
                     <span th:text="${pet.name}" class="pet-name"></span></p>
             </div>
             <div class="pet-details__data">
@@ -16,12 +16,14 @@
                     <p class="pet-personal__elt" th:text="${'종류 > ' + pet.category}"></p>
                     <p class="pet-personal__elt" th:text="${'품종 > ' + pet.breed}"></p>
                     <p class="pet-personal__elt" th:text="${'등록일 > ' + pet.registerDate()}"></p>
+                    <p id="history-getajax" class="pet-personal__elt pet-personal__elt--deepbox"
+                       th:data-petId="${pet.id}" th:text="${'이력 펼치기'}"></p>
                 </div>
                 <div class="long-intro">
                     <h3 class="long-intro__title">소개글</h3>
                     <p class="long-intro__content" th:text="${pet.intro}"></p>
                     <th:block th:if="${session.user != null}">
-                        <div class="mypet" th:if="${session.user.name == pet.userName}">
+                        <div class="mypet" th:if="${session.user.name == pet.user.name}">
                             <span class="mypet__modify">
                                 <a th:href="@{{id}/modify(id=${pet.id})}">펫 정보 바꾸기</a>
                             </span>
@@ -35,11 +37,17 @@
                 </div>
             </div>
         </article>
-        <th:block th:if="${histories != null}">
-            <article class="pet-histories" th:each="history : ${histories}">
-
-            </article>
+        <article class="single-item pet-histories">
+            <h3 th:text="${pet.name + '의 이력 목록'}"></h3>
+            <div class="history">
+                <div class=""></div>
+            </div>
+        </article>
         </th:block>
     </section>
+</th:block>
+<th:block layout:fragment="script_main">
+    <script src="/js/slick.min.js"></script>
+    <script src="/js/history-ajax.js"></script>
 </th:block>
 </html>

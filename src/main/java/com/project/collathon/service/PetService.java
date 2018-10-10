@@ -2,6 +2,7 @@ package com.project.collathon.service;
 
 import com.project.collathon.repository.pet.Pet;
 import com.project.collathon.repository.pet.PetRepository;
+import com.project.collathon.repository.users.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.lang.Nullable;
@@ -40,9 +41,9 @@ public class PetService{
         return pet.orElse(null);
     } // 상세 정보 조회
 
-    public Pet registerPet(String name, String category, String breed, String userName,
+    public Pet registerPet(String name, String category, String breed, Users user,
                             @Nullable String intro, @Nullable boolean isBreed, @Nullable MultipartFile profile) throws IOException {
-        Pet pet = new Pet(name, category, breed, new Timestamp(System.currentTimeMillis()), userName);
+        Pet pet = new Pet(name, category, breed, new Timestamp(System.currentTimeMillis()), user);
         String saveUrl = restore(profile);
         extraDataUpdate(pet, intro, isBreed, saveUrl);
         return petRepository.save(pet);
@@ -91,7 +92,7 @@ public class PetService{
 
     private void writeFile(MultipartFile file, String saveFileName) throws IOException {
         byte [] data = file.getBytes();
-        FileOutputStream fos = new FileOutputStream(SAVE_PATH + "/" + saveFileName);
+        FileOutputStream fos = new FileOutputStream("C:\\Users\\hp\\Desktop\\collathon-project\\src\\main\\resources\\static\\"+SAVE_PATH + "/" + saveFileName);
         fos.write(data);
         fos.close();
     }

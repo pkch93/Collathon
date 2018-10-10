@@ -2,7 +2,7 @@
 <html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:th="http://www.thymeleaf.org">
 <form th:fragment="pet-resister" class="register" action="/pet" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="username" th:value="${session.user.name}"/>
+    <input type="hidden" name="userId" th:value="${session.user.id}"/>
     <input type="hidden" name="category" value="개"/>
     <input type="hidden" name="breed" value="진돗개"/>
 

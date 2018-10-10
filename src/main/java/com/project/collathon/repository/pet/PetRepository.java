@@ -1,5 +1,6 @@
 package com.project.collathon.repository.pet;
 
+import com.project.collathon.repository.history.History;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

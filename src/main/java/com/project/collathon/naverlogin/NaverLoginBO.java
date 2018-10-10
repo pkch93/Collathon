@@ -7,8 +7,10 @@ import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.github.scribejava.core.model.OAuthRequest;
 import com.github.scribejava.core.model.Verb;
 import com.github.scribejava.core.oauth.OAuth20Service;
+import com.project.collathon.repository.users.UserRepository;
 import com.project.collathon.repository.users.Users;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpSession;
@@ -16,8 +18,11 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.UUID;
 
-@Component
+@Service
 public class NaverLoginBO {
+
+    @Autowired
+    UserRepository userRepository;
 
     private final static String CLIENT_ID = "RWxZ72ZPH8UeIatPK3JZ";
     private final static String CLIENT_SECRET = "oop3AOSOtI";
@@ -68,6 +73,8 @@ public class NaverLoginBO {
         String result = request.send().getBody();
         Map<String, Object> map = mapper.readValue(result, new TypeReference<Map<String, Object>>(){});
         Users user = mapper.readValue(mapper.writeValueAsString(map.get("response")),Users.class);
+        Long searchId = user.getId();
+        if(!userRepository.existsById(searchId)) userRepository.save(user);
         return user;
     }
 

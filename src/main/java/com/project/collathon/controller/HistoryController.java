@@ -5,6 +5,8 @@ import com.project.collathon.service.HistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/pet/{petId}")
 public class HistoryController {
@@ -12,9 +14,9 @@ public class HistoryController {
     @Autowired
     HistoryService historyService;
 
-    @GetMapping("/history/{historyId}")
-    public History getHistory(@PathVariable Long historyId){
-        return historyService.getHistory(historyId);
+    @GetMapping("/history")
+    public List<History> getHistory(@PathVariable Long petId){
+        return historyService.getHistories(petId);
     } // history 정보 가져오기
 
     @PostMapping("/history")

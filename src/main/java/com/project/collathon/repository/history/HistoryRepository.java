@@ -1,12 +1,13 @@
 package com.project.collathon.repository.history;
 
+import com.project.collathon.repository.pet.Pet;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface HistoryRepository extends JpaRepository<History, Long> {
-    List<History> findAllById(Long petId);
+    List<History> findHistoriesByPet_Id(Long petId);
 }

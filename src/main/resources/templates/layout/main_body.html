@@ -7,5 +7,9 @@
         <nav th:replace="layout/navbar :: navbar"></nav>
         <th:block layout:fragment="page_main"></th:block>
     </div>
+    <th:block th:fragment="mainScript">
+        <script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+    </th:block>
+    <th:block layout:fragment="script_main"></th:block>
 </body>
 </html>

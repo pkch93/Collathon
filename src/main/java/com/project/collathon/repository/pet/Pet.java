@@ -1,6 +1,8 @@
 package com.project.collathon.repository.pet;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.project.collathon.repository.history.History;
+import com.project.collathon.repository.users.Users;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -38,8 +40,11 @@ public class Pet {
     private boolean isBreeding = false;
     private String profile;
     @NonNull
-    private String userName;
+    @ManyToOne
+    @JoinColumn(name="USER_ID")
+    private Users user;
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "pet")
+    @JsonIgnore
     private List<History> histories;
 
     public String registerDate(){

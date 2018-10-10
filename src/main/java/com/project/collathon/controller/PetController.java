@@ -2,6 +2,7 @@ package com.project.collathon.controller;
 
 import com.project.collathon.repository.history.History;
 import com.project.collathon.repository.pet.Pet;
+import com.project.collathon.repository.users.UserRepository;
 import com.project.collathon.repository.users.Users;
 import com.project.collathon.service.HistoryService;
 import com.project.collathon.service.PetService;
@@ -17,9 +18,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class PetController {
+
+    @Autowired
+    UserRepository userRepository;
 
     @Autowired
     PetService petService;
@@ -47,9 +52,7 @@ public class PetController {
     @GetMapping("/pet/{id}")
     public ModelAndView petDetails(@PathVariable Long id){
         Pet pet = petService.getDetail(id);
-        List<History> histories = historyService.getHistories(id);
         ModelAndView modelAndView = new ModelAndView("pet", "pet", pet);
-        modelAndView.addObject("histories", histories);
         return modelAndView;
     }
 
@@ -69,13 +72,13 @@ public class PetController {
     } // history 등록
 
     @PostMapping("/pet")
-    public ModelAndView registerPet(HttpServletRequest request) throws IOException {
+    public String registerPet(HttpServletRequest request) throws IOException {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+        Users user = userRepository.findById(Long.parseLong(request.getParameter("userId"))).get();
         boolean isBreed = request.getParameter("isBreed") == "T" ? true : false;
         Pet pet = petService.registerPet(request.getParameter("petname"), request.getParameter("category"),
-                request.getParameter("breed"), request.getParameter("username"),
-                request.getParameter("intro"), isBreed, multipartRequest.getFile("profile"));
-        return new ModelAndView("pet", "pet", pet);
+                request.getParameter("breed"), user, request.getParameter("intro"), isBreed, multipartRequest.getFile("profile"));
+        return "redirect:/pet/" + pet.getId();
     }
 
     @GetMapping("/pet/{id}/modify")

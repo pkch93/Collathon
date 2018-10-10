@@ -88,4 +88,14 @@
     ### 2. Back-end
         - HiddenHttpMethodFilter 빈 등록으로 patch, delete method 사용 구현
         - modify, delete url 수정
+
+ - ## 18.10.10
+ 
+    ### 1. View
+        - js 파일 삽입 및 slick.js import
+        - 이력 펼치기 생성 & ajax 통신 구현
         
+    ### 2. Back-end
+        - User Entity 생성
+        - 사진업로드 절대경로로 해결
+        - History 조회 Test

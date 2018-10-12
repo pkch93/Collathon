@@ -1,3 +1,7 @@
+#history-getajax{
+    display: none;
+}
+
 .pet-details{
     display: flex;
     justify-content: center;
@@ -55,6 +59,21 @@
 .long-intro .long-intro__title {
     text-align : center;
     font-size: 40px;
+}
+
+.pet-histories{
+    padding: 0 10%;
+    background-color: rgba(0,0,0, 0.3);
+}
+
+.pet-histories h3 {
+    color: #fff;
+    text-align: center;
+}
+
+.pet-histories > .histories {
+    margin: 0 auto;
+    padding-top: 20px;
 }
 
 .mypet{

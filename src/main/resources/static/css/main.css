@@ -31,3 +31,10 @@ a {
     display: flex;
     min-height: 100%;
 }
+
+#modal--close{
+    float: right;
+    font: bold 40px sans-serif;
+    color: #ffffff;
+    cursor: pointer;
+}

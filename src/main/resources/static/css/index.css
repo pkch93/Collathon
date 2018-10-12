@@ -24,3 +24,12 @@
     margin: 50px 0;
     font-size: 40px;
 }
+
+.logo {
+    display: block;
+    margin: 10px auto;
+}
+
+.logo--big{
+
+}

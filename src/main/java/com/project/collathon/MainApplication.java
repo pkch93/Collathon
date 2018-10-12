@@ -11,6 +11,7 @@ public class MainApplication {
     public static void main(String[] args) {
         SpringApplication.run(MainApplication.class, args);
     }
+
     @Bean // thymeleaf-layout 적용 Bean
     public LayoutDialect layoutDialect(){
         return new LayoutDialect();

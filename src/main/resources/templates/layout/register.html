@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:th="http://www.thymeleaf.org">
-<form th:fragment="pet-resister" class="register" action="/pet" method="post" enctype="multipart/form-data">
+<form th:fragment="pet-resister" class="register register--plain" action="/pet" method="post" enctype="multipart/form-data">
+    <a th:href="@{/}"><img class="logo logo--big" th:src="@{/img/logo.jpg}" alt="로고"/></a>
     <input type="hidden" name="userId" th:value="${session.user.id}"/>
     <input type="hidden" name="category" value="개"/>
     <input type="hidden" name="breed" value="진돗개"/>
@@ -40,28 +41,30 @@
     </div>
     <button class="register-submit" type="submit">애완동물 등록</button>
 </form>
-
-<form th:fragment="history-resister" class="register history-resister" th:action="@{history}" method="post">
-    <h3 class="register__subtitle">이력 등록</h3>
-    <input type="hidden" name="username" th:value="${session.user.name}"/>
-    <div class="register-data">
-        <label>
-            <span class="data data--block">제목</span>
-            <input type="text" name="title" />
-        </label>
-    </div>
-    <div class="register-data">
-        <label>
-            <span class="data data--block">장소</span>
-            <input type="text" name="address"/>
-        </label>
-    </div>
-    <div class="register-data">
-        <label>
-            <span class="data data--block">내용</span>
-            <textarea name="content"></textarea>
-        </label>
-    </div>
-    <button class="register-submit" type="submit">이력 등록</button>
-</form>
+<div id="history__modal" class="register register--modal" th:fragment="history-resister">
+    <form class="history-resister" th:action="@{history}" method="post">
+        <span id="modal--close">&times;</span>
+        <h3 class="register__subtitle register__subtitle--white">이력 등록</h3>
+        <input type="hidden" name="username" th:value="${session.user.name}"/>
+        <div class="register-data">
+            <label>
+                <span class="data data--block">제목</span>
+                <input type="text" name="title" />
+            </label>
+        </div>
+        <div class="register-data">
+            <label>
+                <span class="data data--block">장소</span>
+                <input type="text" name="address"/>
+            </label>
+        </div>
+        <div class="register-data">
+            <label>
+                <span class="data data--block">내용</span>
+                <textarea name="content"></textarea>
+            </label>
+        </div>
+        <button class="register-submit" type="submit">이력 등록</button>
+    </form>
+</div>
 </html>

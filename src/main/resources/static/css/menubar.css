@@ -6,13 +6,14 @@
 
 .menu__logo {
     display: block;
-    margin: 50px auto;
+    margin: 0 auto;
+    width: 200px;
 }
 
 .menu__login {
     display: block;
-    width: 200px;
-    margin: 30px auto;
+    width: 220px;
+    margin: 20px auto;
 }
 
 .menu__welcome{
@@ -28,8 +29,7 @@
 }
 
 .menu__items a {
-    display: inline-block;
-    width: auto;
+    display: block;
 }
 
 .menu__item{

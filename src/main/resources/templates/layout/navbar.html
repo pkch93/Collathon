@@ -2,7 +2,7 @@
 <html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
     <nav th:fragment="navbar" class="menubar">
-        <!--<img class="menu__logo" alt="로고"/>-->
+        <a th:href="@{/}"><img class="menu__logo" th:src="@{/img/logo.jpg}" alt="로고"/></a>
         <ul class="menu__items">
         <th:block th:if="${session.user == null}">
             <a href="/login"><img class="menu__login" th:src="@{/img/naver_login_button.PNG}" alt="네이버 로그인"/></a>

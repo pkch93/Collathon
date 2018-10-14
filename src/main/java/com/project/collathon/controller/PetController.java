@@ -1,6 +1,5 @@
 package com.project.collathon.controller;
 
-import com.project.collathon.repository.history.History;
 import com.project.collathon.repository.pet.Pet;
 import com.project.collathon.repository.users.UserRepository;
 import com.project.collathon.repository.users.Users;
@@ -18,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class PetController {
@@ -75,7 +73,7 @@ public class PetController {
     public String registerPet(HttpServletRequest request) throws IOException {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         Users user = userRepository.findById(Long.parseLong(request.getParameter("userId"))).get();
-        boolean isBreed = request.getParameter("isBreed") == "T" ? true : false;
+        boolean isBreed = request.getParameter("isbreed").equals("T") ? true : false;
         Pet pet = petService.registerPet(request.getParameter("petname"), request.getParameter("category"),
                 request.getParameter("breed"), user, request.getParameter("intro"), isBreed, multipartRequest.getFile("profile"));
         return "redirect:/pet/" + pet.getId();
@@ -88,9 +86,12 @@ public class PetController {
     }
 
     @PatchMapping("/pet/{id}")
-    public ModelAndView updatePet(@PathVariable Long id){
-        // 수정 페이지 고민
-        return new ModelAndView();
+    public ModelAndView updatePet(HttpServletRequest request,
+                                  @RequestParam(name="modify-mode") String mode, @PathVariable Long id) throws IOException {
+        ModelAndView mav = new ModelAndView("pet");
+        Pet pet = petService.updatePet(request, id, mode);
+        mav.addObject("pet", pet);
+        return mav;
     }
 
     @DeleteMapping("/pet/{id}")

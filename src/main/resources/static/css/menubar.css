@@ -4,6 +4,10 @@
     background-color: rgb(239, 197, 97);
 }
 
+.menubar--none{
+    display: none;
+}
+
 .menu__logo {
     display: block;
     margin: 0 auto;

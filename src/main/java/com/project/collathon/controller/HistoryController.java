@@ -1,10 +1,14 @@
 package com.project.collathon.controller;
 
 import com.project.collathon.repository.history.History;
+import com.project.collathon.repository.pet.Pet;
 import com.project.collathon.service.HistoryService;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -20,20 +24,15 @@ public class HistoryController {
     } // history 정보 가져오기
 
     @PostMapping("/history")
-    public String createHistory(@PathVariable Long petId){
-        historyService.createHistory();
-        return "redirect:/pet/" + petId;
+    public List<History> createHistory(@PathVariable Long petId, @RequestParam String title,
+                                @RequestParam String address, @RequestParam String content){
+        historyService.createHistory(petId, title, address, content);
+        return historyService.getHistories(petId);
     } // history 생성
 
-    @PatchMapping("/history/{historyId}")
-    public String updateHistory(@PathVariable Long petId, @PathVariable Long historyId){
-        historyService.updateHistory();
-        return "redirect:/pet/" + petId;
-    } // history 수정
-
     @DeleteMapping("/history/{historyId}")
-    public String deleteHistory(@PathVariable Long petId, @PathVariable Long historyId) {
+    public List<History> deleteHistory(@PathVariable Long petId, @PathVariable Long historyId) {
         historyService.deleteHistory(historyId);
-        return "redirect:/pet/" + petId;
+        return historyService.getHistories(petId);
     } // history 삭제 시
 }

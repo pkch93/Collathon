@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-    <nav th:fragment="navbar" class="menubar">
+    <nav th:fragment="navbar" id="menubar" class="menubar">
         <a th:href="@{/}"><img class="menu__logo" th:src="@{/img/logo.jpg}" alt="로고"/></a>
         <ul class="menu__items">
         <th:block th:if="${session.user == null}">
@@ -14,12 +14,10 @@
             <a th:href="@{/register}"><li class="menu__item">펫 등록</li></a>
         </th:block>
             <a th:href="@{/pet}"><li class="menu__item menu__item--smaller">애완동물조회</li></a>
-            <li class="menu__item menu__item--smaller">애완동물목록</li>
-            <a th:href="@{/histories}"><li class="menu__item">이력</li></a>
         </ul>
     </nav>
     <nav th:fragment="top-nav" class="top-nav">
-        <i class="fas fa-bars toggle-menu"></i>
+        <i id="toggle-menubar" class="fas fa-bars toggle-menu"></i>
         <form class="search" th:action="@{/search}" method="POST">
             <label for="query" class="search__box search__box--flex">
                 <select class="search__category search__query" name="method">

@@ -1,7 +1,10 @@
 package com.project.collathon.repository.history;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.project.collathon.repository.pet.Pet;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.validation.annotation.Validated;
 
@@ -11,6 +14,9 @@ import java.sql.Timestamp;
 @Data
 @Entity
 @Validated
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class History {
     @Id @GeneratedValue
     @Column(name="HISTORY_ID")

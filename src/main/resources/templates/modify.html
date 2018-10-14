@@ -4,8 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/application}">
 <th:block layout:fragment="page_main">
-    <a th:href="@{/}"><img class="logo logo--big" src="#" alt="로고"/></a>
-    <form th:replace="layout/modify :: pet-resister"></form>
-    <form th:replace="layout/modify :: history-resister"></form>
+    <div th:replace="layout/modify :: pet-resister"></div>
 </th:block>
+<th:block layout:fragment="script_main"><script src="/js/register.js"></script></th:block>
 </html>

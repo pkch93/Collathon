@@ -46,13 +46,10 @@ public class AppDataTest {
 
     @Test
     public void addHistory(){
-        History history = new History();
         Optional<Pet> opPet = petRepository.findById(1L);
         Pet pet = opPet.orElse(new Pet());
-        history.setDate(Timestamp.valueOf(LocalDateTime.now()));
-        history.setContent("이력 테스트 1");
-        history.setAddress("대전광역시 유성구 궁동");
-        history.setPet(pet);
+        History history = new History(null, Timestamp.valueOf(LocalDateTime.now())
+        , "이력테스트", "대전광역시 유성구 궁동", "ㅎㅇㅎㅇ", pet);
         History testHistory = historyRepository.save(history);
         assertEquals(history, testHistory);
     }

@@ -1,46 +1,106 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-    <form th:fragment="pet-resister" class="register" th:object="${pet}"
-          th:action="@{/pet/{id}(id=${pet.id})}" th:method="patch" enctype="multipart/form-data">
+<div class="modify" th:fragment="pet-resister">
+    <form class="register" th:object="${pet}"
+          th:action="@{/pet/{id}(id=${pet.id})}" th:method="patch">
+        <a th:href="@{/}"><img class="logo logo--big" th:src="@{/img/logo.jpg}" alt="로고"/></a>
+        <input type="hidden" name="modify-mode" value="required" />
         <input type="hidden" name="username" th:value="${session.user.name}"/>
         <input type="hidden" name="category" value="개"/>
         <input type="hidden" name="breed" value="진돗개"/>
-
-        <h3 class="register__subtitle">필수 정보</h3>
+        <h3 class="register__subtitle">필수 정보 수정</h3>
         <div class="register__required">
             <div class="register-data">
                 <label for="petname">
                     <span class="data data--block">이름</span>
-                    <input id="petname" type="text" name="petname" />
+                    <input id="petname" type="text" th:field="*{name}" />
                 </label>
             </div>
+            <div class="register-data register-data--flex">
+                <span id="register-category" class="data data--modal">종류
+                    <div id="category-modal" class="required">
+                        <div class="deco-triangle"></div>
+                        <div class="select-category">
+                            <span class="required__category" data-category="개">강아지</span>
+                            <span class="required__category" data-category="고양이">고양이</span>
+                        </div>
+                    </div>
+                </span>
+                <span id="register-breed" class="data data--modal">품종
+                    <div id="breed-modal" class="required">
+                        <div class="deco-triangle"></div>
+                        <div id="dogbreed" class="select-dogbreed">
+                            <span class="required__breed" data-breed="불독">불독</span>
+                            <span class="required__breed" data-breed="진돗개">진돗개</span>
+                            <span class="required__breed" data-breed="푸들">푸들</span>
+                            <span class="required__breed" data-breed="골든 리트리버">골든 리트리버</span>
+                            <span class="required__breed" data-breed="비글">비글</span>
+                        </div>
+                        <div id="catbreed" class="select-catbreed">
+                            <span class="required__breed" data-breed="페르시안">페르시안</span>
+                            <span class="required__breed" data-breed="러시안 블루">러시안 블루</span>
+                            <span class="required__breed" data-breed="스코티시 폴드">스코티시 폴드</span>
+                            <span class="required__breed" data-breed="시암">시암</span>
+                            <span class="required__breed" data-breed="래그돌">래그돌</span>
+                        </div>
+                    </div>
+                </span>
+            </div>
         </div>
+        <button class="register-submit" type="submit">애완동물 필수 정보 수정</button>
+    </form>
         <!-- 카테고리와 품종은 span을 이용한 js로 처리 -->
-        <h3 class="register__subtitle">선택 정보</h3>
+    <form class="register" th:object="${pet}"
+          th:action="@{/pet/{id}(id=${pet.id})}" th:method="patch">
+        <input type="hidden" name="modify-mode" value="intro" />
+        <h3 class="register__subtitle">소개글 수정</h3>
         <div class="register__optional">
             <div class="register-data">
                 <label>
                     <span class="data data--block">소개글</span>
-                    <textarea name="intro"></textarea>
+                    <textarea name="intro" th:field="*{intro}"></textarea>
                 </label>
             </div>
+        </div>
+        <button class="register-submit" type="submit">소개글 수정</button>
+    </form>
+    <form class="register" th:object="${pet}"
+          th:action="@{/pet/{id}(id=${pet.id})}" th:method="patch" enctype="multipart/form-data">
+        <input type="hidden" name="modify-mode" value="profile" />
+        <h3 class="register__subtitle">프로필 사진 수정</h3>
+        <div class="register__optional">
             <div class="register-data">
                 <label>
                     <span class="data">애완동물사진</span>
                     <input type="file" name="profile" />
                 </label>
             </div>
+        </div>
+        <button class="register-submit" type="submit">애완동물 프로필 사진 바꾸기</button>
+    </form>
+    <form class="register" th:object="${pet}"
+          th:action="@{/pet/{id}(id=${pet.id})}" th:method="patch">
+        <input type="hidden" name="modify-mode" value="breeding" />
+        <h3 class="register__subtitle">분양여부 수정</h3>
+        <div class="register__optional">
             <div class="register-data">
                 <label>
-                    <span class="data">분양여부</span>
+                    <span class="data">
+                        분양여부 (현재
+                        <th:block th:switch="${pet.breeding}">
+                            <th:block th:case="true">분양 등록 신청상태입니다.)</th:block>
+                            <th:block th:case="false">분양 등록 신청상태가 아닙니다.)</th:block>
+                        </th:block>
+                    </span>
                     네 <input type="radio" name="isbreed" value="T" />
                     아니요<input type="radio" name="isbreed" value="F" checked />
                 </label>
             </div>
         </div>
-        <button class="register-submit" type="submit">애완동물 정보 수정</button>
+        <button class="register-submit" type="submit">분양여부 수정</button>
     </form>
+</div>
 
     <form th:fragment="history-resister" class="register history-resister" th:action="@{history}" method="post">
         <h3 class="register__subtitle">이력 등록</h3>

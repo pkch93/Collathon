@@ -51,4 +51,10 @@ public class Pet {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd");
         return register.toLocalDateTime().format(formatter);
     }
+
+    public void updateRequire(String name, String category, String breed){
+        this.setName(name);
+        this.setCategory(category);
+        this.setBreed(breed);
+    }
 }

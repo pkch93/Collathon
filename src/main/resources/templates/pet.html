@@ -11,9 +11,13 @@
         <nav th:replace="layout/navbar :: top-nav"></nav>
         <article class="pet-details">
             <div class="pet-details__thumbnail">
-                <img  class="pet-avatar" th:src="@{{url}(url=${pet.profile})}" alt="펫 이미지" />
+                <img class="pet-avatar" th:src="@{{url}(url=${pet.profile})}" alt="펫 이미지" />
                 <p class="short-intro"><span class="pet-owner" th:text="${pet.user.name + '님'}"></span>의<br/>
-                    <span th:text="${pet.name}" class="pet-name"></span></p>
+                    <span th:text="${pet.name}" class="pet-name"></span>
+                </p>
+                <th:block th:if="${pet.breeding == true && session.user != null}">
+                    <span class="mypet__breed">입양 신청</span>
+                </th:block>
             </div>
             <div class="pet-details__data">
                 <div class="pet-personal">
@@ -44,7 +48,7 @@
             <h3 th:text="${pet.name + '의 이력 목록'}"></h3>
             <div class="single-item histories"></div>
         </article>
-        <article id="history__modal-button" class="register-button" th:if="${session.user.name == pet.user.name}">이력등록</article>
+        <article id="history__modal-button" class="register-button" th:if="${session.user != null && (session.user.name == pet.user.name)}">이력등록</article>
     </section>
     <div th:replace="layout/register :: history-resister"></div>
 </th:block>

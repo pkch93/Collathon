@@ -59,16 +59,6 @@ public class PetController {
         return "register";
     }
 
-    @PostMapping("/register/pet")
-    public String registerPet(){
-        return "/";
-    } // pet 등록
-
-    @PostMapping("/register/pet/{petId}/history")
-    public String registerHistory(@PathVariable Long petId){
-        return "/";
-    } // history 등록
-
     @PostMapping("/pet")
     public String registerPet(HttpServletRequest request) throws IOException {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;

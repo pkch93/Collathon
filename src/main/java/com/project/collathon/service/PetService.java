@@ -1,9 +1,14 @@
 package com.project.collathon.service;
 
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.project.collathon.repository.pet.Pet;
 import com.project.collathon.repository.pet.PetRepository;
 import com.project.collathon.repository.users.Users;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.data.domain.Sort;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
@@ -24,6 +29,9 @@ public class PetService{
 
     private static final String SAVE_PATH = "/uploads";
     private static final String PREFIX_URL = "/uploads/";
+
+    @Autowired
+    private S3Uploader s3Uploader;
 
     @Autowired
     PetRepository petRepository;
@@ -96,28 +104,32 @@ public class PetService{
     } // 검색 Logic
 
     public String restore(MultipartFile file) throws IOException {
+/*
         String url;
-
         String originFilename = file.getOriginalFilename();
         String extName = originFilename.substring(originFilename.lastIndexOf("."), originFilename.length());
 
         String saveFileName = generateFileName(extName);
-        writeFile(file, saveFileName);
-        url = PREFIX_URL + saveFileName;
+*/
+        String url = s3Uploader.upload(file, "profile");
         return url;
     }
 
+/*
     private String generateFileName(String extName){
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuuMMddhhMMss");
         String fileName = now.format(formatter) + extName;
         return fileName;
     }
+*/
 
+    /*
     private void writeFile(MultipartFile file, String saveFileName) throws IOException {
         byte [] data = file.getBytes();
         FileOutputStream fos = new FileOutputStream("C:\\Users\\hp\\Desktop\\collathon-project\\src\\main\\resources\\static\\"+SAVE_PATH + "/" + saveFileName);
         fos.write(data);
         fos.close();
     }
+    */
 }

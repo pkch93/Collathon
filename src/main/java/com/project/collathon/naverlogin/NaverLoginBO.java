@@ -24,8 +24,8 @@ public class NaverLoginBO {
     @Autowired
     UserRepository userRepository;
 
-    private final static String CLIENT_ID = "RWxZ72ZPH8UeIatPK3JZ";
-    private final static String CLIENT_SECRET = "oop3AOSOtI";
+    private final static String CLIENT_ID = "CLIENT_ID";
+    private final static String CLIENT_SECRET = "CLIENT_SECRET";
     private final static String REDIRECT_URL = "http://localhost:8080/callback";
     private final static String SESSION_STATE = "oauth_state";
     private final static String PROFILE_API_URL = "https://openapi.naver.com/v1/nid/me";
